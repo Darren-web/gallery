@@ -7,7 +7,13 @@ import Home from './pages/home'
 import Buttons from './pages/ui/button'
 import Modals from './pages/ui/modals'
 import Loadings from './pages/ui/loading'
+import Notice from './pages/ui/notice'
 import NoMatch from './pages/nomatch'
+import Message from './pages/ui/message';
+import Tab from './pages/ui/tabs';
+import Gallery from './pages/ui/gallery';
+import Carousels from './pages/ui/carousel';
+import FormLogin from './pages/form';
 
 
 class Router extends Component {
@@ -23,6 +29,12 @@ class Router extends Component {
                                 <Route path="/ui/buttons" component={Buttons}/>
                                 <Route path="/ui/modals" component={Modals}/>
                                 <Route path="/ui/loading" component={Loadings}/>
+                                <Route path="/ui/notification" component={Notice}/>
+                                <Route path="/ui/messages" component={Message}/>
+                                <Route path="/ui/tabs" component={Tab}/>
+                                <Route path="/ui/gallery" component={Gallery}/>
+                                <Route path="/ui/carousel" component={Carousels}/>
+                                <Route path="/form/login" component={FormLogin}/>
                                 <Route component={NoMatch}/>
                             </Switch>
                             </Admin>}
