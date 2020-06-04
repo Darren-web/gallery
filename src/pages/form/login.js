@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
 import { Card, Form, Input, Button, message, Icon, Checkbox } from 'antd'
+import axios from 'axios'
 let FormItem = Form.Item
 class FormLogin extends Component {
     handleSubmit = () => {
         let userInfo = this.props.form.getFieldsValue()
+        console.log('userInfo', userInfo)
         this.props.form.validateFields((err,value)=>{
             if(!err) {
                 message.success(`用户 ${userInfo.userName} 登录密码为${userInfo.userPwd}`)
             }
         })
+        axios.get("./api/check",{
+            params:{
+                userName:userInfo.userName,
+                userPwd:userInfo.userPwd
+            }
+        }).then((data)=>console.log("success",data))
+
+        // axios.get("./json/data.json").then((data)=>{
+        //     console.log('data', data)
+
+        //     if(data.data.name==="tom"){
+        //         console.log('data', data.data.status)
+        //     }
+        // })
+        
     }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div>
-                <Card title="登录行内表单">
-                    <Form layout="inline">
-                        <FormItem>
-                            <Input placeholder="请输入用户名"/>
-                        </FormItem>
-                        <FormItem>
-                            <Input placeholder="请输入密码"/>
-                        </FormItem>
-                        <FormItem>
-                            <Button type="primary">登录</Button>
-                        </FormItem>
-                    </Form>
-                </Card>
-                <Card title="登录水平表单">
-                    <Form style={{width:300}}>
+            <div style={{}}>
+                <Card title="请登录">
+                    <Form style={{width:300,margin:"0 auto"}}>
                         <FormItem>
                             {
                                 getFieldDecorator("userName",{
-                                    initialValue:'',
+                                    initialValue:'123456',
                                     rules:[
                                         {
                                             required:true,
@@ -54,7 +58,7 @@ class FormLogin extends Component {
                         <FormItem>
                             {
                                 getFieldDecorator("userPwd",{
-                                    initialValue:'',
+                                    initialValue:'123456',
                                     rules:[] 
                                 })(
                                     <Input prefix={<Icon type="lock"/>} type="password" placeholder="请输入密码"/>
@@ -75,7 +79,7 @@ class FormLogin extends Component {
                         </FormItem>
                         
                         <FormItem>
-                            <Button type="primary" onClick={this.handleSubmit} >登录</Button>
+                            <Button type="primary" onClick={this.handleSubmit} style={{float:"right"}} >登录</Button>
                         </FormItem>
                     </Form>
                 </Card>

@@ -10,7 +10,7 @@ class Gallery extends Component {
     openGallery = (imgSrc) => {
         this.setState({
             visible:true,
-            currentImg: '/gallery/'+imgSrc
+            currentImg: './gallery/'+imgSrc
         })
     }
     render() {
@@ -23,7 +23,7 @@ class Gallery extends Component {
         let imgList = imgs.map((list) => list.map((item) => 
         <Card
             style={{marginBottom:10}}
-            cover={<img src={'/gallery/'+ item} onClick={()=>this.openGallery(item)} alt=""/>}
+            cover={<img src={'./gallery/'+ item} onClick={()=>this.openGallery(item)} alt=""/>}
         >
             <Card.Meta title="图片展示" description="I love photo"/>
         </Card>
@@ -38,7 +38,7 @@ class Gallery extends Component {
                 </Row>
                 <Modal footer={null}
                     visible = {this.state.visible}
-                    title="图片画廊"
+                    title="图片详情"
                     onCancel = {() => {
                         this.setState({visible:false})
                     }}

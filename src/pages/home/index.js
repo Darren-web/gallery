@@ -5,7 +5,7 @@ class Home extends Component {
     render() {
         return (
             <div className="home-wrap">
-                欢迎使用Hello BIKE 系统
+                欢迎浏览 Gallery 网站
             </div>
         );
     }

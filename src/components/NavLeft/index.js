@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import { Menu, } from 'antd';
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { switchMenu } from './../../redux/action'
 import MenuConfig from './../../config/menuConfig';
 import './index.less'
 
 const SubMenu = Menu.SubMenu;
 class NavLeft extends Component {
+    state = {
+        currentKey: ''
+    }
+    // 菜单点击
+    handleClick = ({ item, key }) => {
+        if (key == this.state.currentKey) {
+            return false;
+        }
+        // 事件派发，自动调用reducer，通过reducer保存到store对象中
+        const { dispatch } = this.props;
+        dispatch(switchMenu(item.props.title));
+
+        this.setState({
+            currentKey: key
+        });
+        // hashHistory.push(key);
+    };
     componentWillMount(){
         const menuTreeNode = this.renderMenu(MenuConfig)
         this.setState({
@@ -27,14 +46,20 @@ class NavLeft extends Component {
             })
         )
     }
+    homeHandleClick = () => {
+        const { dispatch } = this.props;
+        dispatch(switchMenu('首页'));
+        this.setState({
+            currentKey: ""
+        });
+    };
     render() {
         return (
             <div>
                 <div className="logo">
-                    <img alt='' src="/assets/logo-ant.svg"/>
-                    <h1>Hello BIKE</h1>
+                    <img alt='' src="./assets/logos.png"/>
                 </div>
-                <Menu theme="dark">
+                <Menu theme="dark" onClick={this.handleClick}>
                     {this.state.menuTreeNode}
                 </Menu>
             </div>
@@ -42,4 +67,4 @@ class NavLeft extends Component {
     }
 }
 
-export default NavLeft;
+export default connect()(NavLeft)

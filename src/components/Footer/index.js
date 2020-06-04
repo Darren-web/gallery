@@ -5,7 +5,7 @@ class Footer extends Component {
     render() {
         return (
             <div className="footer">
-                版权所有：Darren&（推荐使用谷歌浏览器，可以获得更佳操作页面体验） 技术支持：Darren
+                版权所有：河北科技师范学院-谢鑫洋 （推荐使用谷歌浏览器，可以获得更佳操作页面体验） 
             </div>
         );
     }
