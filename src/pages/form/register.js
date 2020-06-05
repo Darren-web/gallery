@@ -67,6 +67,36 @@ class FormRegister extends React.Component{
                                 )
                             }
                         </FormItem>
+                        <FormItem label="邮箱" {...formItemLayout}>
+                            {
+                                getFieldDecorator('mail', {
+                                    initialValue: '',
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: '邮箱不能为空'
+                                        }
+                                    ]
+                                })(
+                                    <Input  placeholder="请输入邮箱" />
+                                )
+                            }
+                        </FormItem>
+                        <FormItem label="电话" {...formItemLayout}>
+                            {
+                                getFieldDecorator('phone', {
+                                    initialValue: '',
+                                    rules: [
+                                        {
+                                            required: true,
+                                            message: '电话不能为空'
+                                        }
+                                    ]
+                                })(
+                                    <Input type="text" placeholder="请输入邮箱" />
+                                )
+                            }
+                        </FormItem>
                         
                         
                         <FormItem {...offsetLayout}>
