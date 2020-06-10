@@ -1,17 +1,16 @@
 <?php
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	$author=$_POST['author'];
+	$userName=$_POST['userName'];
 	$content=$_POST['content'];
-	$face=$_POST['face'];
 	include("conn.php");
-	$flag=mysql_query("insert into message(author,content,face,addTime) value ('$author','$content','$face',now())");
+	$flag=mysql_query("insert into message(userName,content,time) value ('$userName','$content',now())");
 	if($flag){
-		header("location:lyb.php");
+		echo '{"status":"1001","msg":"success"}'
 	}else{
-		echo '<script>alert("发布留言错误，请联系博主");location.href="lyb.php";</script>';
+		echo '{"status":"1002","msg":"success"}'
 	}
 	mysql_close($conn);
 }else{
-	header("location:error.php");
+	echo '{"status":"2001","msg":"error"}'
 }
 ?>

@@ -4,8 +4,7 @@ import App from './App'
 import Admin from './admin'
 import Home from './pages/home'
 import NoMatch from './pages/nomatch'
-import Message from './pages/ui/message';
-import Gallery from './pages/ui/gallery';
+import Gallery from './pages/gallery';
 import FormLogin from './pages/form/login';
 import FormRegister from './pages/form/register';
 import LeaveMsg from './pages/leavemsg';
@@ -21,7 +20,6 @@ class Router extends Component {
                         <Route path="/" render={()=><Admin>
                             <Switch>
                                 <Route path="/" exact component={Home}/>
-                                <Route path="/ui/messages" component={Message}/>
                                 <Route path="/gallery" component={Gallery}/>
                                 <Route path="/form/login" component={FormLogin}/>
                                 <Route path="/form/reg" component={FormRegister}/>
