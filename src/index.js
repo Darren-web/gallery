@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import configureStore from './redux/store/configureStore';
 import * as serviceWorker from './serviceWorker';
 import Router from './router'
-import './setupProxy' 
 
 const store = configureStore();
 ReactDOM.render(

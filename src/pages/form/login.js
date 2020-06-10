@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { Card, Form, Input, Button, message, Icon, Checkbox } from 'antd'
+import { Card, Form, Input, Button, message, Icon, Checkbox, Col } from 'antd'
 import axios from 'axios'
 import qs from 'qs'
 let FormItem = Form.Item
 class FormLogin extends Component {
     handleSubmit = () => {
         let userInfo = this.props.form.getFieldsValue()
-        // console.log('userInfo', userInfo)
-        // this.props.form.validateFields((err,value)=>{
-        //     if(!err) {
-        //         message.success(`用户 ${userInfo.userName} 登录密码为${userInfo.userPwd}`)
-        //     }
-        // })
-        axios.get("/api1",{
-            params:{
-                userName:userInfo.userName,userPwd:userInfo.userPwd
-            }
+        axios({
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            method: 'post',
+            url: '/api1',
+            data: qs.stringify({userName:userInfo.userName,userPwd:userInfo.userPwd})
         }).then((data)=>{
+            console.log('data', data)
             if(data.data.status==="1001"){
                 message.success(`用户 ${userInfo.userName} 登录成功`)
             }else{
